@@ -1,0 +1,33 @@
+diff --git a/soundcraft/dbus.py b/soundcraft/dbus.py
+index 20633fb..cdce973 100644
+--- a/soundcraft/dbus.py
++++ b/soundcraft/dbus.py
+@@ -214,7 +214,7 @@ def serviceExePath():
+ SCALABLE_ICONDIR = Path("/usr/local/share/icons/hicolor/scalable/apps/")
+ 
+ 
+-def setup_dbus(cfgroot=Path("/usr/share/dbus-1")):
++def setup_dbus(cfgroot=Path("share/dbus-1").resolve()):
+     templateData = {
+         "dbus_service_bin": str(serviceExePath()),
+         "busname": BUSNAME,
+@@ -230,8 +230,8 @@ def setup_dbus(cfgroot=Path("/usr/share/dbus-1")):
+                 with open(dst, "w") as dstfile:
+                     dstfile.write(srcTemplate.substitute(templateData))
+     print(f"Starting service version {soundcraft.__version__}...")
+-    client = Client()
+-    print(f"Version running: {client.serviceVersion()}")
++    #client = Client()
++    #print(f"Version running: {client.serviceVersion()}")
+     print(f"Setup is complete")
+     print(f"Run soundcraft_gui or soundcraft_cli as a regular user")
+ 
+@@ -263,7 +263,7 @@ def setup_xdg():
+ 
+ def setup():
+     setup_dbus()
+-    setup_xdg()
++    #setup_xdg()
+ 
+ 
+ def uninstall_dbus(cfgroot=Path("/usr/share/dbus-1")):
