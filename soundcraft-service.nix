@@ -22,13 +22,6 @@ in {
           Start Soundcraft Notepad D-Bus service.
         '';
       };
-      systemd = mkOption {
-        default = false;
-        type = with types; bool;
-        description = ''
-          Start systemd service DEBUG!!
-        '';
-      };
     };
   };
 
